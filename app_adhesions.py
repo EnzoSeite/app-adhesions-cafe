@@ -40,7 +40,10 @@ if fichier_charge is not None:
         # Exemple de lecture si le fichier a la structure complète
         if 'Adhérent.es 2025 et 2026' in wb.sheetnames:
             ws1 = wb['Adhérent.es 2025 et 2026']
-            ws2 = wb.get('Adhérent.es 2026', ws1)
+            if 'Adhérent.es 2026' in wb.sheetnames:
+                ws2 = wb['Adhérent.es 2026']
+            else:
+                ws2 = ws1
 
             membres_2026 = set()
             for r in range(8, ws2.max_row + 1):
